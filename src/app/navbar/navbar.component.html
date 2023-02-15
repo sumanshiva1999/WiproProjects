@@ -1,0 +1,86 @@
+
+<div class="navbar-container">
+    <nav class="navbar fixed-top navbar-expand-lg bg-primary-subtle">
+        <div class="container-fluid">
+            <!-- Navbar Icon -->
+            <a class="navbar-brand fs-3" href="#">
+                <img src="https://e7.pngegg.com/pngimages/14/977/png-clipart-grocery-store-shopping-others-miscellaneous-retail.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-top">          
+            </a>
+            <i class="title fs-2 ">Shop13</i>
+    
+            <!-- Button when nav Collapsed -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Remaining Content Container -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+    
+                <!-- Nav bar Left Side -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    
+                    <li class="nav-item">
+                        <a class="nav-link" routerLinkActive="active" routerLink="/categories">Categories</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <!--  aria-current="page" -->
+                        <a class="nav-link" routerLinkActive="active" routerLink="/sports-items">Sports Items</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" routerLinkActive="active" routerLink="/health-drinks">Health Drinks</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" routerLinkActive="active" routerLink="/gym">Gym</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" routerLinkActive="active" routerLink="/accessories">Accessories</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" routerLinkActive="active" routerLink="/sports-clothing">Sports Clothing</a>
+                    </li>
+                    
+                    
+                </ul>             
+    
+                <!-- Nav bar Right side -->
+                <form class="d-flex" role="search">
+                    <ul class="d-flex navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLinkActive="active" routerLink="/cart">Cart</a>
+                        </li>
+        
+                        <li class="nav-item">
+                            <a class="nav-link" routerLinkActive="active" routerLink="/wishlist">Wishlist</a>
+                        </li>
+    
+                        <!-- Displaying user profile -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle nav-link bi bi-person-circle fs-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Change Password</a></li>
+                                <li><a class="dropdown-item" href="#">Show Profile</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Log Out</a></li>
+                                <li><a class="dropdown-item" href="#">Delete Account</a></li>
+                            </ul>
+                            </li>
+                        
+                            <!-- Display Username -->
+                        <li class="nav-item">
+                            <a class="nav-link" > {{"Welcome "+ userName | titlecase}} </a>
+                        </li>
+    
+                    </ul>
+                </form>
+    
+            </div>
+    
+        </div>
+    </nav>
+</div>
