@@ -1,0 +1,82 @@
+
+<app-navbar [userName]="user"></app-navbar>
+
+<div [class.container-fluid]="sideContainer">
+    <div [class.row]="sideContainer">
+
+        <!-- All Products Container -->
+        <div class="products-container" [class.col-8]="sideContainer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div [ngClass]="{
+                        'col-4': sideContainer,
+                        'pb-3': sideContainer,
+                        'col-3': !sideContainer
+                    }"
+                    *ngFor="let product of products"
+                    (click)="imageContainer(product)">
+                        <img [src]="product?.image" alt="" class="img-thumbnail">
+                        <p style="font-weight: bold;" class=""> {{ product?.name }} </p>
+                        <h4 style="font-weight: bold;" class=""> {{ product?.price | currency:'INR' }} </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Side Container -->
+        <div [hidden]="!sideContainer" class="side-container" [class.col-4]="sideContainer" >
+            <!-- Navbar Type -->
+            <div class="d-flex flex-row">
+                <i class="bi bi-x-square" (click)="sideContainer = false"></i>        
+                <h1 class="pt-1"> {{ displayProduct?.name }} </h1>
+            </div>
+
+            <!-- Body -->
+            <img [src]="displayProduct?.image" class="displayProduct img-fluid" alt="">
+            <p> {{ displayProduct?.description }} </p>
+
+            <!-- Cart, Wishlist Buttons container -->
+            <div class="d-flex flex-row justify-content-between">
+                <!-- cart button before adding -->
+                <button class="btn btn-primary ml-3" *ngIf="!cartIcon" (click)="addToCart()">Add to Cart <i class="bi bi-cart"></i> </button>
+                <!-- cart button after adding products -->
+                <button class="" *ngIf="cartIcon">
+                    <i class="bi bi-dash p-1 fs-5 icon" (click)="decreaseCount()"></i>
+                    <i class="bi bi-cart-fill p-1 fs-5 icon"> {{ this.cartproduct?.quantity }} </i>
+                    <i class="bi bi-plus p-1 fs-5 icon" (click)="increaseCount()"></i>
+                </button>
+                <!-- Wishlist button before adding -->
+                <button class="btn btn-primary mr-3" *ngIf="!wishlistIcon" (click)="addToWishlist()">
+                    Wishlist <i class="bi bi-heart"></i> 
+                </button>
+                <!-- Button after wishlisted -->
+                <button class="" *ngIf="wishlistIcon" (click)="deleteFromWishlist()">
+                    <i class="bi bi-heart-fill"></i>
+                </button>
+            </div>
+
+            <!-- Extra Items Container -->
+            <div class="d-flex flex-row justify-content-between return">
+                <div class="text-center">
+                    <i class="bi bi-truck fs-1"></i>
+                    <p>Free Delivery</p>
+                </div>
+                <div class="text-center">
+                    <i class="bi bi-lock-fill fs-1"></i>
+                    <p>Secured Transaction</p>
+                </div>
+                <div class="text-center">
+                    <i class="bi bi-bootstrap-reboot fs-1"></i>
+                    <p>{{ displayProduct?.returnType }} day Free Return Policy</p>
+                </div>
+            </div>
+            <div class="text-center">
+                <i class="bi bi-bootstrap-reboot fs-1"></i>
+                <p> Claim {{ displayProduct?.warranty }} Years Warranty at service centers</p>
+            </div>
+            
+        </div>
+
+    </div>
+</div>
+

@@ -1,0 +1,36 @@
+
+<div class="cart-container">
+
+    <table class="table table-striped">
+
+        <!-- display names of product -->
+        <thead>
+          <tr>
+            <th scope="col" class="fs-4">Image</th>
+            <th scope="col" class="fs-4">Name</th>
+            <th scope="col" class="fs-4">Price</th>
+            <th scope="col" class="fs-4">Quantity</th>
+            <th scope="col" class="fs-4">Total</th>
+            <th scope="col" class="fs-4">Button</th>
+          </tr>
+        </thead>
+        <!-- displays Cart products -->
+        <tbody class="table-group-divider">
+          <tr *ngFor="let product of cartItems; even as e" [class.bs-success-bg-subtle]="e">
+            <th scope="row"> <img [src]="product?.image" alt="" height="100px" width="100px"> </th>
+            <td class="table-description fs-5"> {{ product?.name }} </td>
+            <td class="table-description fs-5"> {{ product?.price | currency:"INR" }} </td>
+            <td class="table-description fs-5">
+                <input [(ngModel)]="product.quantity" type="number" min="1" max="10" [value]="product?.quantity">
+            </td>
+            <td class="table-description fs-5"> {{ (product?.price *  +product?.quantity) | currency:"INR" }} </td>
+            <td class="">
+                 <button class="btn btn-primary m-2"> Delete </button> <br>
+                 <button class="btn btn-primary m-2"> update </button> 
+            </td>
+        
+          </tr>
+        </tbody>
+
+    </table>
+</div>

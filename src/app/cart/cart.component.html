@@ -1,0 +1,49 @@
+
+<app-navbar></app-navbar>
+
+<div class="refresh-button">
+  <button class="btn btn-secondary m-2" (click)="getCart()">Refresh Cart</button>
+</div>
+
+<div class="fs-3 fw-3" *ngIf="cartItems.length == 0; else displayCart">
+  Uhh.. Ohh.. You have still not added any items to your cart. 
+  Explore the available products by clicking <a routerLink="/categories">here..</a>
+</div>
+
+<ng-template #displayCart>
+  <div class="cart-container">
+  
+      <table class="table table-striped">
+  
+          <!-- display names of product -->
+          <thead>
+            <tr>
+              <th scope="col" class="fs-4">Image</th>
+              <th scope="col" class="fs-4">Name</th>
+              <th scope="col" class="fs-4">Price</th>
+              <th scope="col" class="fs-4">Quantity</th>
+              <th scope="col" class="fs-4">Total</th>
+              <th scope="col" class="fs-4">Button</th>
+            </tr>
+          </thead>
+          <!-- displays Cart products -->
+          <tbody class="table-group-divider">
+            <tr *ngFor="let product of cartItems; even as e" [class.bs-success-bg-subtle]="e">
+              <th scope="row"> <img [src]="product?.image" alt="" height="100px" width="100px"> </th>
+              <td class="table-description fs-5"> {{ product?.name }} </td>
+              <td class="table-description fs-5"> {{ product?.price | currency:"INR" }} </td>
+              <td class="table-description fs-5">
+                  <input [(ngModel)]="product.quantity" type="number" min="1" max="10" [value]="product?.quantity">
+              </td>
+              <td class="table-description fs-5"> {{ (product?.price *  +product?.quantity) | currency:"INR" }} </td>
+              <td class="">
+                   <button class="btn btn-primary m-2" (click)="deleteCartItem(product)"> Delete </button> <br>
+                   <button class="btn btn-primary m-2" (click)="updateCart(product)"> update </button> 
+              </td>
+          
+            </tr>
+          </tbody>
+  
+      </table>
+  </div>
+</ng-template>

@@ -1,0 +1,54 @@
+
+
+.container-fluid {
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    /* background-color: lightgreen; */
+}
+
+.img-thumbnail {
+    /* height: 200px;
+    width: 250px; */
+    cursor: pointer;
+}
+
+.displayProduct {
+    width: 100%;
+}
+
+.return {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.side-container {
+    overflow-y: hidden;
+    height: 100%;
+    /* padding-bottom: 20px; */
+}
+
+.bi {
+    height: 40px;
+    width: 40px;
+}
+
+.bi-x-square {
+    font-size: 40px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.bi-x-square:hover {
+    font-size: 40px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    color: white;
+    background-color: black;
+}
+
+.col-8 {
+    height: 100vh;
+    overflow-y: scroll;
+}

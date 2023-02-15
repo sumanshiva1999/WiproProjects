@@ -1,0 +1,20 @@
+
+table {
+    width: 100%;
+}
+  
+tr.mat-mdc-footer-row td {
+    font-weight: bold;
+}
+
+.cart-container {
+    padding: 20px;
+}
+
+.table-description {
+    padding-top: 3.5%;
+} 
+
+.refresh-button{
+    text-align: right;
+}

@@ -1,0 +1,45 @@
+
+<app-navbar></app-navbar>
+
+<div class="refresh-button">
+    <button class="btn btn-secondary m-2" (click)="getWishlist()">Refresh Wishlist</button>
+</div>
+
+<div class="fs-3 fw-3" *ngIf="wishlistItems.length == 0; else displayWishlist">
+    Uhh.. Ohh.. You have still not added any items to your wishlist. 
+    Explore the available products by clicking <a routerLink="/categories">here..</a>
+</div>
+
+
+<ng-template #displayWishlist>
+    <div class="cart-container">
+    
+        <table class="table table-striped">
+    
+            <!-- display names of product -->
+            <thead>
+              <tr>
+                <th scope="col" class="fs-4">Image</th>
+                <th scope="col" class="fs-4">Name</th>
+                <th scope="col" class="fs-4">Price</th>
+                <th scope="col" class="fs-4">Button</th>
+              </tr>
+            </thead>
+            <!-- displays Cart products -->
+            <tbody class="table-group-divider">
+              <tr *ngFor="let product of wishlistItems; even as e" [class.bs-success-bg-subtle]="e">
+                <th scope="row"> <img [src]="product?.image" alt="" height="100px" width="100px"> </th>
+                <td class="table-description fs-5"> {{ product?.name }} </td>
+                <td class="table-description fs-5"> {{ product?.price | currency:"INR" }} </td>
+                
+                <td class="">
+                     <button class="btn btn-primary m-2" (click)="addToCart(product)"> Add to Cart </button>
+                     <button class="btn btn-primary m-2" (click)="removeFromWishlist(product)"> Remove </button> 
+                </td>
+            
+              </tr>
+            </tbody>
+    
+        </table>
+    </div>
+</ng-template>

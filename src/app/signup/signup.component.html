@@ -1,0 +1,189 @@
+
+
+<!-- Reactive forms -->
+<form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+
+    <div class="form-group-container">
+        <div class="sign-up-container">
+          
+            <!-- E-mail Field container -->
+            <label for="emailAddress" class="fw-bold">Email Address</label>
+            <div class="form-group">   
+                <input formControlName="email" type="text" id="emailAddress" class="form-control" />
+                
+                <!-- Errors -->
+                <div class="alert alert-danger" *ngIf="email?.touched && email?.invalid">
+                    <div *ngIf="email?.errors?.['required']">Email field is Required</div>
+                    <div *ngIf="email?.errors?.['email']">Not a valid Email Format</div>
+                </div>
+            </div>
+        
+            <!-- First Name Field Container -->
+            <div class="form-group">
+                <label for="firstName" class="fw-bold">First Name</label>
+                <input formControlName="firstName" type="text" id="firstName" class="form-control">
+            
+                <!-- Errors -->
+                <div class="alert alert-danger" *ngIf="firstName?.touched && firstName?.invalid">
+                    <div *ngIf="firstName?.errors?.['required']">Name Field should not be empty</div>
+                </div>
+            
+            </div>
+        
+            <!-- Last Name Container -->
+            <div class="form-group">
+                <label for="secondName" class="fw-bold">Last Name</label>
+                <input formControlName="secondName" type="text" id="secondName" class="form-control">
+            
+                <!-- Errors -->
+                <div class="alert alert-danger" *ngIf="secondName?.touched && secondName?.invalid">
+                    <div *ngIf="secondName?.errors?.['required']">Name Field should not be empty</div>          
+                </div>
+                <div class="alert alert-danger" *ngIf="(firstName?.value ==secondName?.value) && (secondName?.touched)">FirstName and Second Name cannot be same</div>
+            
+            </div>
+    
+            <!-- Password -->
+            <div class="form-group">
+                <label for="Password" class="fw-bold">Password</label>
+                <input formControlName="password" type="text" id="Password" class="form-control">
+            
+                <!-- Errors -->
+                <div class="alert alert-danger" *ngIf="password?.touched && password?.invalid">
+                    <div *ngIf="password?.errors?.['required']">Password is Required</div>          
+                </div>
+            
+            </div>
+    
+            <!-- Confirm Password -->
+            <div class="form-group">
+                <label for="CPassword" class="fw-bold">Confirm Password</label>
+                <input formControlName="cPassword" type="text" id="CPassword" class="form-control">
+            
+                <!-- Errors -->
+                <div class="alert alert-danger" *ngIf="cPassword?.touched && cPassword?.invalid">
+                    <div *ngIf="cPassword?.errors?.['required']">Password is Required</div>          
+                </div>
+                <div class="alert alert-danger" *ngIf="(password?.value !=cPassword?.value) && (cPassword?.dirty)">Both Passwords must be same</div>
+            
+            </div>
+        
+            <!-- Number Container -->
+            <ng-template>
+                <div class="form-group">
+                    <label for="contactNumber" class="fw-bold">Contact Number</label>
+                    <input formControlName="number" type="text" id="contactNumber" class="form-control">
+                
+                    <!-- Errors -->
+                    <div class="alert alert-danger" *ngIf="number?.touched && number?.invalid">
+                        <div *ngIf="number?.errors?.['required']">contact number Field should be provided</div>
+                        <div *ngIf="number?.errors?.['minlength']">contact number Field should be minimum 10 digits</div>
+                        <div *ngIf="number?.errors?.['maxlength']">contact number Field cannot exceed 10 digits</div>           
+                    </div>
+        
+                </div>
+            </ng-template>
+        
+            <!-- Button Container -->
+            <div class="text-center pt-3">
+                <button [disabled]="form.invalid" class="btn btn-primary">Sign-Up</button>
+            </div>
+    
+            <p class="pt-3">Already have an account, <a routerLink="/login">Click here!..</a> </p>
+            <!-- <p> {{ form.value | json }} </p> -->
+    
+        </div>
+    </div>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ng-template>
+<!-- Template-driven Form -->
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <div class="form-group-container">
+        
+            <div class="form-group">   
+                <label for="emailAddress" class="fw-bold">Email Address</label>
+                <input ngModel name="email" #email="ngModel"  required email type="text" id="emailAddress" class="form-control" />
+                
+                <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+                    <div *ngIf="email.errors?.['required']">Email should not be empty</div>   
+                    <div *ngIf="email.errors?.['email']">This is not a valid Email</div>   
+
+                </div>
+            </div>
+        
+            <div class="form-group">
+                <label for="firstName" class="fw-bold">First Name</label>
+                <input ngModel name="firstName" #firstName="ngModel"  required type="text" id="firstName" class="form-control">
+            
+                <div class="alert alert-danger" *ngIf="firstName.touched && firstName.invalid">
+                    <div *ngIf="firstName.errors?.['required']">Name Field should not be empty</div>   
+                </div>
+            </div>
+        
+            <div class="form-group">
+                <label for="secondName" class="fw-bold">Second Name</label>
+                <input ngModel name="secondName" #secondName="ngModel"  required type="text" id="secondName" class="form-control" />
+            
+                <div class="alert alert-danger" *ngIf="secondName.touched && secondName.invalid">
+                    <div *ngIf="secondName.errors?.['required']">Name Field should not be empty</div>   
+                </div>
+            
+            </div>
+        
+            <div class="form-group">
+                <label for="contactNumber" class="fw-bold">Contact Number</label>
+                <input ngModel name="contactNumber" #contactNumber="ngModel"  required type="text" id="contactNumber" class="form-control" />
+            
+                <div class="alert alert-danger" *ngIf="contactNumber.touched && contactNumber.invalid">
+                    <div *ngIf="contactNumber.errors?.['required']">Number Field should not be empty</div>   
+                </div>
+                <div *ngIf="contactNumber.dirty" class="alert alert-dark alert-dismissible fade show">Promise! We don't spam you!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+            
+            </div>
+        
+            <!-- Button -->
+            <div class="text-center">
+                <button [disabled]="form.invalid" class="btn btn-primary">Sign-Up</button>
+            </div>
+
+            
+        </div>
+
+        <!-- Drop-down List -->
+        <div class="form-group">
+            <label for="countriesDropDown">Choose a Country</label>
+            <select ngModel name="countriesList" #countriesList="ngModel"  id="countriesDropDown" class="form-control">
+                <option value="0" selected>Select a Country</option>
+                <!-- <option *ngFor="let country of countries" [value]="country"> {{ country }} </option> -->
+            </select>
+        </div>
+
+        <!-- Object displays all form control values -->
+        <div [ngStyle]="{
+            'clear': 'both'       
+        }">
+            
+            <h1> {{ form?.value | json }} </h1>
+            <h1>  {{ form?.submitted}} </h1>
+        </div>
+
+    </form>
+</ng-template>

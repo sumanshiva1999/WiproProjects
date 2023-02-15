@@ -1,0 +1,43 @@
+
+
+<!-- Reactive forms -->
+<form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+
+    <div class="form-group-container">
+        <div class="sign-in-container">
+          
+            <!-- E-mail Field container -->
+            <div class="form-group">   
+                <label for="emailAddress" class="fw-bold">Email Address</label>
+                <input formControlName="email" type="text" id="emailAddress" class="form-control" />
+                
+                <!-- Errors -->
+                <div class="alert alert-danger" *ngIf="email?.touched && email?.invalid">
+                    <div *ngIf="email?.errors?.['required']">Email field is Required</div>
+                    <div *ngIf="email?.errors?.['email']">Not a valid Email Format</div>
+                </div>
+            </div>
+    
+            <!-- Password -->
+            <div class="form-group">
+                <label for="Password" class="fw-bold">Password</label>
+                <input formControlName="password" type="text" id="Password" class="form-control">
+            
+                <!-- Errors -->
+                <div class="alert alert-danger" *ngIf="password?.touched && password?.invalid">
+                    <div *ngIf="password?.errors?.['required']">Password is Required</div>          
+                </div>
+            
+            </div>
+        
+            <!-- Button Container -->
+            <div class="text-center pt-3">
+                <button [disabled]="form.invalid" class="btn btn-primary">Login</button>
+            </div>
+    
+            <!-- <p> {{ form.value | json }} </p> -->
+            <p class="pt-3">Still not have account. <a routerLink="/register">Click here</a> to get one..</p>
+        </div>
+    </div>
+
+</form>

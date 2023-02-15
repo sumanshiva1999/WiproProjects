@@ -1,0 +1,22 @@
+
+
+.fw-bold {
+    font-size: 20px;
+}
+
+.form-group-container {
+    background-image: url("src/assets/Signup-bg-image.jpeg");
+    height: 100vh;
+    background-size: cover;
+}
+
+.sign-in-container {
+    width: 40%;
+    padding-top: 15%;
+    padding-left: 3%;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
